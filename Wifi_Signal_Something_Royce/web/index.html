@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WiFi Heatmap Visualizer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <div class="topbar">
+      <div class="title">WiFi Heatmap Visualizer</div>
+      <div class="buttons">
+        <button id="btnSuggest" class="btn">Suggest Best WiFi</button>
+        <button id="btnToggleAuras" class="btn">Toggle Signal Auras</button>
+        <button id="btnShowGraph" class="btn">Show Graph</button>
+        <button id="btnReset" class="btn btn-danger">Reset</button>
+      </div>
+    </div>
+
+    <div class="left-panel">
+      <div id="statusOrb" class="status-orb" title="Network status"></div>
+      <div class="legend">
+        <div class="legend-item"><span class="chip chip-strong"></span> Strong</div>
+        <div class="legend-item"><span class="chip chip-medium"></span> Medium</div>
+        <div class="legend-item"><span class="chip chip-weak"></span> Weak</div>
+      </div>
+      <div class="hint">
+        Tip: Allow location when prompted so we can save GPS coordinates.
+      </div>
+      <!-- Side graph removed in favor of modal popup -->
+    </div>
+
+    <div class="canvas-wrap">
+      <canvas id="heatmap"></canvas>
+      <div id="tooltip" class="tooltip" style="display:none"></div>
+      <div id="progress" class="progress" style="display:none">
+        <div class="progress-bar"></div>
+        <span id="progressText" class="progress-text">0%</span>
+      </div>
+      <div id="result" class="result" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- Graph Modal -->
+  <div id="graphModal" class="modal" style="display:none">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Distance vs Strength</div>
+        <button id="btnCloseGraph" class="btn btn-danger" aria-label="Close graph">Close</button>
+      </div>
+      <div class="modal-body">
+        <canvas id="graph2dModal"></canvas>
+        <div id="graphTooltip" class="tooltip" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
